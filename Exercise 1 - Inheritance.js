@@ -56,7 +56,89 @@ function GalilieEditor (){
   
   //mixins -  when we want to extends behaviors - TODO Start after functional programming.
   
+  // Why is Overloading not allowed based on return types? - As ambiguity exists for the compiler to determine which one to invoke when the return type is not specified during invocation.
+// 
+Supermarket Implementation :-
+Has Stores as member - Ex:- Bakery, Veggie Store both extend Store class.
+Location as member
+
+Store has:-
+size,
+cost of operation,
+floor
+ItemCatalogs
+
+ItemCatalog - 
+has Items 
+Category - Class(name)
+
+Items - 
+price
+name 
+description
+Categories 
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+function SuperMarket ( location) {
+   this.location = location;
+   this.stores = [];
+}
+
+function Store(size, costOfProdcution,floor){
+  this.size = size;
+  this.costOfProdcution = costOfProdcution;
+  this.floor = floor;
+  this.itemCatalogs = [];
+}
+SuperMarket.prototype.addStore = function(store){
+
+};
+SuperMarket.prototype.removeStore = function(store){
+
+};
+
+function ItemCatalogs (category){
+  this.category = category;
+  this.items = [];
+}
+
+Store.prototype.addCatalog = function(itemCatalog){
+ if(itemCatalog instanceof ItemCatalogs){
+   this.itemCatalogs.push(itemCatalog);
+	  }else{
+	    throw new Error("Add an Item!");
+	  }
+ };
+ Store.prototype.removeCatalog = function(){
+    var index;
+	if (itemCatalog instanceof ItemCatalogs && this.itemCatalogs.length > 0){
+		index = this.itemCatalogs.indexOf(itemCatalog);
+		if(index != -1){
+			this.itemCatalogs.splice(index,1);
+ };
+
+ ItemCatalogs.prototype.addItem = function (item){
+    //
+ };
+ ItemCatalogs.prototype.removeItem = function ()
+{
+   //
+};
+function Bakery (){
+  Store.call(this);
+}
+function Veggie () {
+  Store.call(this);
+}
+Bakery.prototype = Object.create(Store.prototype);
+Veggie.prototype = Object.create(Store.prototype);
   
-  
-  
-  
+
+ objStore = new Store(); 
+ objstore.add(new ItemCatalogs(perfume));
+
+ objMarket = new SuperMarket();
+ objMarket.add(new Store(500,120000,2));
