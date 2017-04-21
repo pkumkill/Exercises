@@ -1,0 +1,36 @@
+{1,2-}->{2,4-}->{4,3-}->{3,5-}->{5,null}
+
+struct Node{
+    int item;
+    Node next*;
+} 
+void add(struct Node list*, struct Node node*, int position){
+
+}
+
+class LinkedList {
+    Object head;
+    Object next;
+
+    public LinkedList(Object head{
+        this.head = head;
+    }
+
+    public void add(Object node, int position){
+        //Add to Linked list at a position
+    }
+}
+
+class Node {
+    int item;
+    int somethingElse;
+
+    public Node(int item,int somethingElse){
+        this.item = item;
+        this.somethingElse = somethingElse;
+    }
+}
+
+LinkedList l = new LinkedList(new Node(1,2));
+
+l.add(new Node(1,2),2);
