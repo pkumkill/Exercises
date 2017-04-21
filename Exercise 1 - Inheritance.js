@@ -24,36 +24,37 @@ DiagramEditor.prototype.remove = function(diagram){
 			this.diagrams.splice(index,1);
 		}
 	}
-}
+};
+
+DiagramEditor.prototype.draw = function(a){
+	// Draw to DOM.
+};
 
 //Better way to define functions in the prototype as we don't want to create duplicate functions on every instance creation.
 
 //Prototype is a special object which every function has, where you define functions/properties that belong to the class.
 
-function GalilieEditor (){
-   DiagramEditor.call(this);
-}
- 
+ function GalilieEditor (){
+  DiagramEditor.call(this);
+ }
+
  dEditor = new DiagramEditor();
  dEditor.add(new Diagram(0,0,10,20);
  
- 
- 
   //Standard Inheritance/Not Recommended
   GalilieEditor.prototype = new DiagramEditor();
-  
-  GalilieEditor.prototype.draw = function() {
-    //TODO : Draw to DOM
-  }
-  
+
   //Recommended - Parasitic Inheritance (when we wnat to inherit a class)
   GalilieEditor.prototype = Object.create(DiagramEditor.prototype);
   
-  GalilieEditor.prototype.draw = function() {
-    //TODO : Draw to DOM
-  }
-  
-  
+  //Overriding a method
+  GalilieEditor.prototype.draw = function(a,b) {
+    DiagramEditor.prototype.draw(this, arguments); // Calls super's draw method if you want to
+    //TODO : Draw to DOM Galilie Style // Coninue drawing here
+
+    //else if you dom't want that write your draw logic
+  };
+
   //mixins -  when we want to extends behaviors - TODO Start after functional programming.
   
   // Why is Overloading not allowed based on return types? - As ambiguity exists for the compiler to determine which one to invoke when the return type is not specified during invocation.
@@ -112,29 +113,33 @@ Store.prototype.addCatalog = function(itemCatalog){
 	    throw new Error("Add an Item!");
 	  }
  };
+ 
  Store.prototype.removeCatalog = function(){
     var index;
-	if (itemCatalog instanceof ItemCatalogs && this.itemCatalogs.length > 0){
+	  if (itemCatalog instanceof ItemCatalogs && this.itemCatalogs.length > 0){
 		index = this.itemCatalogs.indexOf(itemCatalog);
 		if(index != -1){
 			this.itemCatalogs.splice(index,1);
  };
 
- ItemCatalogs.prototype.addItem = function (item){
+ ItemCatalogs.prototype.addItem = function(item){
     //
  };
- ItemCatalogs.prototype.removeItem = function ()
-{
+
+ ItemCatalogs.prototype.removeItem = function() {
    //
-};
-function Bakery (){
+ };
+
+ function Bakery (){
+   Store.call(this);
+ }
+
+ function Veggie () {
   Store.call(this);
-}
-function Veggie () {
-  Store.call(this);
-}
-Bakery.prototype = Object.create(Store.prototype);
-Veggie.prototype = Object.create(Store.prototype);
+ }
+
+ Bakery.prototype = Object.create(Store.prototype);
+ Veggie.prototype = Object.create(Store.prototype);
   
 
  objStore = new Store(); 
